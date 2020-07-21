@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+
 
 function App() {
+  const [text,setText] = useState('')
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="searchBar">
+        <TextField label="Get that meme" placeholder="Meme finder" variant="outlined" color="primary"
+          value = {text}
+          onChange = { e => setText(e.target.value)}
+          onKeyPress ={ e => {
+            if(e.key === 'Enter')
+              search()
+            }
+          }
+        />
+        <Button variant="contained" color="primary" style={{height:50, marginLeft:8}} disabled={!text} onClick={search}>
+            Search!
+        </Button>
+      </div>
     </div>
   );
 }
