@@ -38,8 +38,12 @@ function App() {
       </div>
       <div className="memes">
         {memes.map((m,i)=>{
-          return <img key={i} src={m.images.fixed_height.url}/>
-          // fixed_height chosen from the list. consolelog to see what is available.
+          return <div className="meme">
+            <img key={i} src={m.images.fixed_height.url}/> {/* // fixed_height chosen from the list. consolelog to see what is available. */}
+            <div className="meme-title">
+                {m.title}
+            </div>
+          </div>
         })}
       </div>
     </div>
